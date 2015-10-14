@@ -106,6 +106,18 @@ $r=$this->executeGET('programs/services.json');
 return json_decode($r);
 }
 
+public function programs_service($id)
+{
+$r=$this->executeGET('programs/services/'.$id.'.json');
+return json_decode($r);
+}
+
+public function programs_nowplaying($id)
+{
+$r=$this->executeGET('programs/nowplaying/'.$id.'.json');
+return json_decode($r);
+}
+
 }
 
 ?>
