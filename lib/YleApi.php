@@ -2,6 +2,7 @@
 
 class YleException extends Exception { }
 class YleAuthException extends YleException { }
+class YleRateLimitException extends YleException { }
 
 class YleAPIClient
 {
@@ -56,6 +57,8 @@ switch ($status) {
 	case 200:
 		return true;
 	case 401:
+		throw new YleRateLimitException($response, $status);
+	case 403:
 		throw new YleAuthException($response, $status);
 	default:
 		throw new YleException($response, $status);
