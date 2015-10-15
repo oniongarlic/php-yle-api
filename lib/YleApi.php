@@ -19,7 +19,7 @@ function __construct($id, $key, $decrypt)
 {
 $this->app_id=$id;
 $this->app_key=$key;
-$this->decrypt=$decrypt;
+$this->decrypt_key=$decrypt;
 }
 
 public function set_debug($bool)
@@ -93,13 +93,42 @@ $this->handleStatus($status, $error, $response);
 return $response;
 }
 
+protected function validate_pid($pid)
+{
+// XXX Check that input is x-yyyyy formated
+return true;
+}
+
+protected function validate_mid($mid)
+{
+// XXX Check that input looks like a media id
+return true;
+}
+
 /*************************************************************
- *
+ * Decrypt
+ *************************************************************/
+
+public function media_url_decrypt($url)
+{
+$tmp=base64_decode($url);
+$tmp=mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $this->decrypt_key, substr($tmp, 16), MCRYPT_MODE_CBC, substr($tmp, 0, 16));
+return substr($tmp, 0, -ord($tmp[strlen($tmp)-1]));
+}
+
+/*************************************************************
+ * Programs
  *************************************************************/
 
 public function programs_items()
 {
 $r=$this->executeGET('programs/items.json');
+return json_decode($r);
+}
+
+public function programs_item($id)
+{
+$r=$this->executeGET('programs/items/'.$id.'.json');
 return json_decode($r);
 }
 
@@ -118,6 +147,47 @@ return json_decode($r);
 public function programs_nowplaying($id)
 {
 $r=$this->executeGET('programs/nowplaying/'.$id.'.json');
+return json_decode($r);
+}
+
+/*************************************************************
+ * Tracking
+ *************************************************************/
+
+public function tracking_streamstart($pid, $mid)
+{
+$q=array(
+	'program_id'=>$pid,
+	'media_id'=>$mid
+);
+$r=$this->executeGET('tracking/streamstart', $q);
+return json_decode($r);
+}
+
+/*************************************************************
+ * Media
+ *************************************************************/
+
+public function media_find_ondemand_publication_media_id(stdClass $program)
+{
+$events=$program->data->publicationEvent;
+if (count($events)==0)
+	return false;
+foreach ($events as $e) {
+	if ($e->temporalStatus=='currently' && $e->type=='OnDemandPublication')
+		return $e->media->id;
+}
+return false;
+}
+
+public function media_playouts($pid, $mid)
+{
+$q=array(
+	'program_id'=>$pid,
+	'media_id'=>$mid,
+	'protocol'=>'HLS'
+);
+$r=$this->executeGET('media/playouts.json', $q);
 return json_decode($r);
 }
 
