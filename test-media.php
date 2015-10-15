@@ -9,12 +9,23 @@ else
 
 $api=$config['Generic'];
 
-$pid='1-2897178';
+// TV/Video
+//$pid='1-2897178';
+//$pid='1-3088770';
+
+//$pid='26-44376';
+//$pid='1-2347105';
+
+// Radio
+//$pid='1-3045411';
+
+$pid='4-4746868';
 
 $c=new YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
 $c->set_debug(true);
 
 $a=$c->programs_item($pid);
+print_r($a);
 
 $mid=$c->media_find_ondemand_publication_media_id($a);
 
