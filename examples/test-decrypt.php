@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-require_once('lib/YleApi.php');
+require_once('../lib/YleApi.php');
 
 if (file_exists("config.ini"))
 	$config=parse_ini_file("config.ini", true);
