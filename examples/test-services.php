@@ -8,15 +8,16 @@ else
 	die("Configuration file config.ini is missing\n");
 
 if ($argc!==2)
-	die("Channel ID required!\n");
+	$t=false;
+else
+	$t=$argv[1];
 
-$pid=$argv[1];
 $api=$config['Generic'];
 
 $c=new YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
 $c->set_debug(true);
 
-$a=$c->programs_nowplaying($pid);
-file_put_contents('nowplaying.json', json_encode($a, JSON_PRETTY_PRINT));
+$a=$c->programs_services($t);
+file_put_contents('services.json', json_encode($a, JSON_PRETTY_PRINT));
 print_r($a);
 ?>
