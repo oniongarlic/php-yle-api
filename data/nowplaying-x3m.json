@@ -1,0 +1,1058 @@
+API Endpoint: https://external.api.yle.fi/v1/programs/nowplaying/yle-x3m.json?app_id=49816cd4&app_key=bcd2c0ad4d7cb2ce73a94a13603f77ab
+Data:
+stdClass Object
+(
+    [apiVersion] => 1.0.1461
+    [meta] => stdClass Object
+        (
+            [service] => yle-x3m
+            [start] => -2
+            [end] => 2
+            [count] => 5
+        )
+
+    [data] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => NowPlaying
+                    [startTime] => 2015-10-26T19:27:09+0200
+                    [endTime] => 2015-10-26T19:30:20+0200
+                    [duration] => PT191S
+                    [content] => stdClass Object
+                        (
+                            [id] => 12-1026-2-10620
+                            [type] => MusicRecording
+                            [title] => stdClass Object
+                                (
+                                    [unknown] => Feelings
+                                )
+
+                            [performer] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [type] => agent
+                                            [name] => MAROON 5
+                                        )
+
+                                )
+
+                        )
+
+                    [service] => stdClass Object
+                        (
+                            [typeMedia] => RadioContent
+                            [homepage] => stdClass Object
+                                (
+                                    [title] => stdClass Object
+                                        (
+                                            [fi] => Kotisivu
+                                            [sv] => Hemsida
+                                        )
+
+                                    [type] => WebPage
+                                    [url] => http://yle.fi/extrem
+                                    [serviceProvider] => http://yle.fi
+                                )
+
+                            [indexDataModified] => 2015-06-12T11:38:55.096+03:00
+                            [type] => RadioChannel
+                            [interaction] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Twitter
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Twitter
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [serviceProvider] => http://twitter.com
+                                                            [url] => https://mobile.twitter.com/RadioX3M
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://twitter.com
+                                            [url] => https://twitter.com/RadioX3M
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Facebook
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Facebook
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [url] => https://m.facebook.com/radiox3m
+                                                            [serviceProvider] => http://facebook.com
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://facebook.com
+                                            [url] => https://facebook.com/radiox3m
+                                        )
+
+                                )
+
+                            [title] => stdClass Object
+                                (
+                                    [sv] => Yle X3M
+                                )
+
+                            [region] => Finland
+                            [programGuide] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Ohjelmaopas
+                                                    [sv] => Programguide
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://yle.fi
+                                            [url] => http://ohjelmaopas.yle.fi/radio/guide
+                                        )
+
+                                )
+
+                            [outlet] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [region] => Finland
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [region] => World
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                )
+
+                            [language] => Array
+                                (
+                                    [0] => sv
+                                )
+
+                            [active] => 1
+                            [id] => yle-x3m
+                            [displayOrder] => 7000
+                            [typeCreative] => Channel
+                            [audio] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [format] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [inScheme] => mediaformat-classification
+                                                            [type] => Concept
+                                                            [key] => stereo
+                                                        )
+
+                                                )
+
+                                            [language] => Array
+                                                (
+                                                    [0] => sv
+                                                )
+
+                                            [type] => AudioTrack
+                                        )
+
+                                )
+
+                        )
+
+                    [delta] => -2
+                    [partOf] => stdClass Object
+                        (
+                            [id] => 12-1026-4-92265
+                            [type] => RadioProgram
+                            [title] => stdClass Object
+                                (
+                                    [sv] => X3M Kväll
+                                )
+
+                        )
+
+                )
+
+            [1] => stdClass Object
+                (
+                    [type] => NowPlaying
+                    [startTime] => 2015-10-26T19:30:46+0200
+                    [endTime] => 2015-10-26T19:35:01+0200
+                    [duration] => PT255S
+                    [content] => stdClass Object
+                        (
+                            [id] => 12-1026-2-10375
+                            [type] => MusicRecording
+                            [title] => stdClass Object
+                                (
+                                    [unknown] => Everyday
+                                )
+
+                            [performer] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [type] => agent
+                                            [name] => ASAP ROCKY & ROD STEWART & MIGUEL & MARK RONSON
+                                        )
+
+                                )
+
+                        )
+
+                    [service] => stdClass Object
+                        (
+                            [typeMedia] => RadioContent
+                            [homepage] => stdClass Object
+                                (
+                                    [title] => stdClass Object
+                                        (
+                                            [fi] => Kotisivu
+                                            [sv] => Hemsida
+                                        )
+
+                                    [type] => WebPage
+                                    [url] => http://yle.fi/extrem
+                                    [serviceProvider] => http://yle.fi
+                                )
+
+                            [indexDataModified] => 2015-06-12T11:38:55.096+03:00
+                            [type] => RadioChannel
+                            [interaction] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Twitter
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Twitter
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [serviceProvider] => http://twitter.com
+                                                            [url] => https://mobile.twitter.com/RadioX3M
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://twitter.com
+                                            [url] => https://twitter.com/RadioX3M
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Facebook
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Facebook
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [url] => https://m.facebook.com/radiox3m
+                                                            [serviceProvider] => http://facebook.com
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://facebook.com
+                                            [url] => https://facebook.com/radiox3m
+                                        )
+
+                                )
+
+                            [title] => stdClass Object
+                                (
+                                    [sv] => Yle X3M
+                                )
+
+                            [region] => Finland
+                            [programGuide] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Ohjelmaopas
+                                                    [sv] => Programguide
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://yle.fi
+                                            [url] => http://ohjelmaopas.yle.fi/radio/guide
+                                        )
+
+                                )
+
+                            [outlet] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [region] => Finland
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [region] => World
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                )
+
+                            [language] => Array
+                                (
+                                    [0] => sv
+                                )
+
+                            [active] => 1
+                            [id] => yle-x3m
+                            [displayOrder] => 7000
+                            [typeCreative] => Channel
+                            [audio] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [format] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [inScheme] => mediaformat-classification
+                                                            [type] => Concept
+                                                            [key] => stereo
+                                                        )
+
+                                                )
+
+                                            [language] => Array
+                                                (
+                                                    [0] => sv
+                                                )
+
+                                            [type] => AudioTrack
+                                        )
+
+                                )
+
+                        )
+
+                    [delta] => -1
+                    [partOf] => stdClass Object
+                        (
+                            [id] => 12-1026-4-92265
+                            [type] => RadioProgram
+                            [title] => stdClass Object
+                                (
+                                    [sv] => X3M Kväll
+                                )
+
+                        )
+
+                )
+
+            [2] => stdClass Object
+                (
+                    [type] => NowPlaying
+                    [startTime] => 2015-10-26T19:36:12+0200
+                    [endTime] => 2015-10-26T19:39:30+0200
+                    [duration] => PT198S
+                    [content] => stdClass Object
+                        (
+                            [id] => 12-1026-2-10531
+                            [type] => MusicRecording
+                            [title] => stdClass Object
+                                (
+                                    [unknown] => For A Better Day
+                                )
+
+                            [performer] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [type] => agent
+                                            [name] => AVICII
+                                        )
+
+                                )
+
+                        )
+
+                    [service] => stdClass Object
+                        (
+                            [typeMedia] => RadioContent
+                            [homepage] => stdClass Object
+                                (
+                                    [title] => stdClass Object
+                                        (
+                                            [fi] => Kotisivu
+                                            [sv] => Hemsida
+                                        )
+
+                                    [type] => WebPage
+                                    [url] => http://yle.fi/extrem
+                                    [serviceProvider] => http://yle.fi
+                                )
+
+                            [indexDataModified] => 2015-06-12T11:38:55.096+03:00
+                            [type] => RadioChannel
+                            [interaction] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Twitter
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Twitter
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [serviceProvider] => http://twitter.com
+                                                            [url] => https://mobile.twitter.com/RadioX3M
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://twitter.com
+                                            [url] => https://twitter.com/RadioX3M
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Facebook
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Facebook
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [url] => https://m.facebook.com/radiox3m
+                                                            [serviceProvider] => http://facebook.com
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://facebook.com
+                                            [url] => https://facebook.com/radiox3m
+                                        )
+
+                                )
+
+                            [title] => stdClass Object
+                                (
+                                    [sv] => Yle X3M
+                                )
+
+                            [region] => Finland
+                            [programGuide] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Ohjelmaopas
+                                                    [sv] => Programguide
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://yle.fi
+                                            [url] => http://ohjelmaopas.yle.fi/radio/guide
+                                        )
+
+                                )
+
+                            [outlet] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [region] => Finland
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [region] => World
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                )
+
+                            [language] => Array
+                                (
+                                    [0] => sv
+                                )
+
+                            [active] => 1
+                            [id] => yle-x3m
+                            [displayOrder] => 7000
+                            [typeCreative] => Channel
+                            [audio] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [format] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [inScheme] => mediaformat-classification
+                                                            [type] => Concept
+                                                            [key] => stereo
+                                                        )
+
+                                                )
+
+                                            [language] => Array
+                                                (
+                                                    [0] => sv
+                                                )
+
+                                            [type] => AudioTrack
+                                        )
+
+                                )
+
+                        )
+
+                    [delta] => 0
+                    [partOf] => stdClass Object
+                        (
+                            [id] => 12-1026-4-92265
+                            [type] => RadioProgram
+                            [title] => stdClass Object
+                                (
+                                    [sv] => X3M Kväll
+                                )
+
+                        )
+
+                )
+
+            [3] => stdClass Object
+                (
+                    [type] => NowPlaying
+                    [startTime] => 2015-10-26T19:41:17+0200
+                    [endTime] => 2015-10-26T19:44:35+0200
+                    [duration] => PT198S
+                    [content] => stdClass Object
+                        (
+                            [id] => 12-1026-2-10615
+                            [type] => MusicRecording
+                            [title] => stdClass Object
+                                (
+                                    [unknown] => Book of love
+                                )
+
+                            [performer] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [type] => agent
+                                            [name] => FELIX JAEHN & POLINA
+                                        )
+
+                                )
+
+                        )
+
+                    [service] => stdClass Object
+                        (
+                            [typeMedia] => RadioContent
+                            [homepage] => stdClass Object
+                                (
+                                    [title] => stdClass Object
+                                        (
+                                            [fi] => Kotisivu
+                                            [sv] => Hemsida
+                                        )
+
+                                    [type] => WebPage
+                                    [url] => http://yle.fi/extrem
+                                    [serviceProvider] => http://yle.fi
+                                )
+
+                            [indexDataModified] => 2015-06-12T11:38:55.096+03:00
+                            [type] => RadioChannel
+                            [interaction] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Twitter
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Twitter
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [serviceProvider] => http://twitter.com
+                                                            [url] => https://mobile.twitter.com/RadioX3M
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://twitter.com
+                                            [url] => https://twitter.com/RadioX3M
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Facebook
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Facebook
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [url] => https://m.facebook.com/radiox3m
+                                                            [serviceProvider] => http://facebook.com
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://facebook.com
+                                            [url] => https://facebook.com/radiox3m
+                                        )
+
+                                )
+
+                            [title] => stdClass Object
+                                (
+                                    [sv] => Yle X3M
+                                )
+
+                            [region] => Finland
+                            [programGuide] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Ohjelmaopas
+                                                    [sv] => Programguide
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://yle.fi
+                                            [url] => http://ohjelmaopas.yle.fi/radio/guide
+                                        )
+
+                                )
+
+                            [outlet] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [region] => Finland
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [region] => World
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                )
+
+                            [language] => Array
+                                (
+                                    [0] => sv
+                                )
+
+                            [active] => 1
+                            [id] => yle-x3m
+                            [displayOrder] => 7000
+                            [typeCreative] => Channel
+                            [audio] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [format] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [inScheme] => mediaformat-classification
+                                                            [type] => Concept
+                                                            [key] => stereo
+                                                        )
+
+                                                )
+
+                                            [language] => Array
+                                                (
+                                                    [0] => sv
+                                                )
+
+                                            [type] => AudioTrack
+                                        )
+
+                                )
+
+                        )
+
+                    [delta] => 1
+                    [partOf] => stdClass Object
+                        (
+                            [id] => 12-1026-4-92265
+                            [type] => RadioProgram
+                            [title] => stdClass Object
+                                (
+                                    [sv] => X3M Kväll
+                                )
+
+                        )
+
+                )
+
+            [4] => stdClass Object
+                (
+                    [type] => NowPlaying
+                    [startTime] => 2015-10-26T19:44:56+0200
+                    [endTime] => 2015-10-26T19:48:47+0200
+                    [duration] => PT231S
+                    [content] => stdClass Object
+                        (
+                            [id] => 12-1026-2-10604
+                            [type] => MusicRecording
+                            [title] => stdClass Object
+                                (
+                                    [unknown] => 7 years
+                                )
+
+                            [performer] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [type] => agent
+                                            [name] => LUKAS GRAHAM
+                                        )
+
+                                )
+
+                        )
+
+                    [service] => stdClass Object
+                        (
+                            [typeMedia] => RadioContent
+                            [homepage] => stdClass Object
+                                (
+                                    [title] => stdClass Object
+                                        (
+                                            [fi] => Kotisivu
+                                            [sv] => Hemsida
+                                        )
+
+                                    [type] => WebPage
+                                    [url] => http://yle.fi/extrem
+                                    [serviceProvider] => http://yle.fi
+                                )
+
+                            [indexDataModified] => 2015-06-12T11:38:55.096+03:00
+                            [type] => RadioChannel
+                            [interaction] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Twitter
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Twitter
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [serviceProvider] => http://twitter.com
+                                                            [url] => https://mobile.twitter.com/RadioX3M
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://twitter.com
+                                            [url] => https://twitter.com/RadioX3M
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Facebook
+                                                )
+
+                                            [hasVersion] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [title] => stdClass Object
+                                                                (
+                                                                    [fi] => Facebook
+                                                                )
+
+                                                            [device] => mobile
+                                                            [type] => WebPage
+                                                            [url] => https://m.facebook.com/radiox3m
+                                                            [serviceProvider] => http://facebook.com
+                                                        )
+
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://facebook.com
+                                            [url] => https://facebook.com/radiox3m
+                                        )
+
+                                )
+
+                            [title] => stdClass Object
+                                (
+                                    [sv] => Yle X3M
+                                )
+
+                            [region] => Finland
+                            [programGuide] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [title] => stdClass Object
+                                                (
+                                                    [fi] => Ohjelmaopas
+                                                    [sv] => Programguide
+                                                )
+
+                                            [type] => WebPage
+                                            [serviceProvider] => http://yle.fi
+                                            [url] => http://ohjelmaopas.yle.fi/radio/guide
+                                        )
+
+                                )
+
+                            [outlet] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [region] => Finland
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [region] => World
+                                            [type] => Webcast
+                                            [media] => stdClass Object
+                                                (
+                                                    [id] => 10-18
+                                                    [type] => AudioObject
+                                                )
+
+                                        )
+
+                                )
+
+                            [language] => Array
+                                (
+                                    [0] => sv
+                                )
+
+                            [active] => 1
+                            [id] => yle-x3m
+                            [displayOrder] => 7000
+                            [typeCreative] => Channel
+                            [audio] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [format] => Array
+                                                (
+                                                    [0] => stdClass Object
+                                                        (
+                                                            [inScheme] => mediaformat-classification
+                                                            [type] => Concept
+                                                            [key] => stereo
+                                                        )
+
+                                                )
+
+                                            [language] => Array
+                                                (
+                                                    [0] => sv
+                                                )
+
+                                            [type] => AudioTrack
+                                        )
+
+                                )
+
+                        )
+
+                    [delta] => 2
+                    [partOf] => stdClass Object
+                        (
+                            [id] => 12-1026-4-92265
+                            [type] => RadioProgram
+                            [title] => stdClass Object
+                                (
+                                    [sv] => X3M Kväll
+                                )
+
+                        )
+
+                )
+
+        )
+
+)

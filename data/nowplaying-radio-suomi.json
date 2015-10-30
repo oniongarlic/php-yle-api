@@ -1,0 +1,601 @@
+{
+    "apiVersion": "1.0.1461",
+    "meta": {
+        "service": "yle-radio-suomi",
+        "start": -2,
+        "end": 2,
+        "count": 5
+    },
+    "data": [
+        {
+            "type": "NowPlaying",
+            "startTime": "2015-10-28T23:17:36+0200",
+            "endTime": "2015-10-28T23:20:28+0200",
+            "duration": "PT172S",
+            "content": {
+                "id": "12-1023-2-11234",
+                "type": "MusicRecording",
+                "title": {
+                    "unknown": "Rantakoivun alla"
+                },
+                "performer": [
+                    {
+                        "type": "agent",
+                        "name": "DALLAP\u00c9 & TOPI SORSAKOSKI"
+                    }
+                ]
+            },
+            "service": {
+                "typeMedia": "RadioContent",
+                "homepage": {
+                    "title": {
+                        "fi": "Kotisivu",
+                        "sv": "Hemsida"
+                    },
+                    "type": "WebPage",
+                    "url": "http:\/\/yle.fi\/radiosuomi",
+                    "serviceProvider": "http:\/\/yle.fi"
+                },
+                "indexDataModified": "2015-06-12T11:38:55.096+03:00",
+                "type": "RadioChannel",
+                "interaction": [
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "url": "https:\/\/m.facebook.com\/radiosuomi",
+                                "serviceProvider": "http:\/\/facebook.com"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/facebook.com",
+                        "url": "https:\/\/facebook.com\/radiosuomi"
+                    },
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "serviceProvider": "http:\/\/twitter.com",
+                                "url": "https:\/\/mobile.twitter.com\/radiosuomi"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/twitter.com",
+                        "url": "https:\/\/twitter.com\/radiosuomi"
+                    }
+                ],
+                "title": {
+                    "fi": "Yle Radio Suomi"
+                },
+                "region": "Finland",
+                "programGuide": [
+                    {
+                        "title": {
+                            "fi": "Ohjelmaopas",
+                            "sv": "Programguide"
+                        },
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/yle.fi",
+                        "url": "http:\/\/ohjelmaopas.yle.fi\/radio\/opas"
+                    }
+                ],
+                "language": [
+                    "fi"
+                ],
+                "active": true,
+                "id": "yle-radio-suomi",
+                "displayOrder": 3000,
+                "typeCreative": "Channel",
+                "audio": [
+                    {
+                        "language": [
+                            "fi"
+                        ],
+                        "format": [
+                            {
+                                "inScheme": "mediaformat-classification",
+                                "type": "Concept",
+                                "key": "stereo"
+                            }
+                        ],
+                        "type": "AudioTrack"
+                    }
+                ]
+            },
+            "delta": "-2",
+            "partOf": {
+                "id": "12-1023-4-1265962",
+                "type": "RadioProgram",
+                "title": {
+                    "fi": "Y\u00f6radio - toiveiden y\u00f6."
+                }
+            }
+        },
+        {
+            "type": "NowPlaying",
+            "startTime": "2015-10-28T23:20:55+0200",
+            "endTime": "2015-10-28T23:24:48+0200",
+            "duration": "PT233S",
+            "content": {
+                "id": "12-1023-2-15812",
+                "type": "MusicRecording",
+                "title": {
+                    "unknown": "Mit\u00e4 s\u00e4 ajattelet (anna sun \u00e4\u00e4nesi kuulua)"
+                },
+                "performer": [
+                    {
+                        "type": "agent",
+                        "name": "JONNE AARON (feat. JEREMY FOLDEROL)"
+                    }
+                ]
+            },
+            "service": {
+                "typeMedia": "RadioContent",
+                "homepage": {
+                    "title": {
+                        "fi": "Kotisivu",
+                        "sv": "Hemsida"
+                    },
+                    "type": "WebPage",
+                    "url": "http:\/\/yle.fi\/radiosuomi",
+                    "serviceProvider": "http:\/\/yle.fi"
+                },
+                "indexDataModified": "2015-06-12T11:38:55.096+03:00",
+                "type": "RadioChannel",
+                "interaction": [
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "url": "https:\/\/m.facebook.com\/radiosuomi",
+                                "serviceProvider": "http:\/\/facebook.com"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/facebook.com",
+                        "url": "https:\/\/facebook.com\/radiosuomi"
+                    },
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "serviceProvider": "http:\/\/twitter.com",
+                                "url": "https:\/\/mobile.twitter.com\/radiosuomi"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/twitter.com",
+                        "url": "https:\/\/twitter.com\/radiosuomi"
+                    }
+                ],
+                "title": {
+                    "fi": "Yle Radio Suomi"
+                },
+                "region": "Finland",
+                "programGuide": [
+                    {
+                        "title": {
+                            "fi": "Ohjelmaopas",
+                            "sv": "Programguide"
+                        },
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/yle.fi",
+                        "url": "http:\/\/ohjelmaopas.yle.fi\/radio\/opas"
+                    }
+                ],
+                "language": [
+                    "fi"
+                ],
+                "active": true,
+                "id": "yle-radio-suomi",
+                "displayOrder": 3000,
+                "typeCreative": "Channel",
+                "audio": [
+                    {
+                        "language": [
+                            "fi"
+                        ],
+                        "format": [
+                            {
+                                "inScheme": "mediaformat-classification",
+                                "type": "Concept",
+                                "key": "stereo"
+                            }
+                        ],
+                        "type": "AudioTrack"
+                    }
+                ]
+            },
+            "delta": "-1",
+            "partOf": {
+                "id": "12-1023-4-1265962",
+                "type": "RadioProgram",
+                "title": {
+                    "fi": "Y\u00f6radio - toiveiden y\u00f6."
+                }
+            }
+        },
+        {
+            "type": "NowPlaying",
+            "startTime": "2015-10-28T23:25:22+0200",
+            "endTime": "2015-10-28T23:29:08+0200",
+            "duration": "PT226S",
+            "content": {
+                "id": "12-1023-2-6903",
+                "type": "MusicRecording",
+                "title": {
+                    "unknown": "My Sweet Lord"
+                },
+                "performer": [
+                    {
+                        "type": "agent",
+                        "name": "GEORGE HARRISON"
+                    }
+                ]
+            },
+            "service": {
+                "typeMedia": "RadioContent",
+                "homepage": {
+                    "title": {
+                        "fi": "Kotisivu",
+                        "sv": "Hemsida"
+                    },
+                    "type": "WebPage",
+                    "url": "http:\/\/yle.fi\/radiosuomi",
+                    "serviceProvider": "http:\/\/yle.fi"
+                },
+                "indexDataModified": "2015-06-12T11:38:55.096+03:00",
+                "type": "RadioChannel",
+                "interaction": [
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "url": "https:\/\/m.facebook.com\/radiosuomi",
+                                "serviceProvider": "http:\/\/facebook.com"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/facebook.com",
+                        "url": "https:\/\/facebook.com\/radiosuomi"
+                    },
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "serviceProvider": "http:\/\/twitter.com",
+                                "url": "https:\/\/mobile.twitter.com\/radiosuomi"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/twitter.com",
+                        "url": "https:\/\/twitter.com\/radiosuomi"
+                    }
+                ],
+                "title": {
+                    "fi": "Yle Radio Suomi"
+                },
+                "region": "Finland",
+                "programGuide": [
+                    {
+                        "title": {
+                            "fi": "Ohjelmaopas",
+                            "sv": "Programguide"
+                        },
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/yle.fi",
+                        "url": "http:\/\/ohjelmaopas.yle.fi\/radio\/opas"
+                    }
+                ],
+                "language": [
+                    "fi"
+                ],
+                "active": true,
+                "id": "yle-radio-suomi",
+                "displayOrder": 3000,
+                "typeCreative": "Channel",
+                "audio": [
+                    {
+                        "language": [
+                            "fi"
+                        ],
+                        "format": [
+                            {
+                                "inScheme": "mediaformat-classification",
+                                "type": "Concept",
+                                "key": "stereo"
+                            }
+                        ],
+                        "type": "AudioTrack"
+                    }
+                ]
+            },
+            "delta": "0",
+            "partOf": {
+                "id": "12-1023-4-1265962",
+                "type": "RadioProgram",
+                "title": {
+                    "fi": "Y\u00f6radio - toiveiden y\u00f6."
+                }
+            }
+        },
+        {
+            "type": "NowPlaying",
+            "startTime": "2015-10-28T23:30:08+0200",
+            "endTime": "2015-10-28T23:34:18+0200",
+            "duration": "PT250S",
+            "content": {
+                "id": "12-1023-2-9578",
+                "type": "MusicRecording",
+                "title": {
+                    "unknown": "Is\u00e4nmaan toivot"
+                },
+                "performer": [
+                    {
+                        "type": "agent",
+                        "name": "MIKKO ALATALO"
+                    }
+                ]
+            },
+            "service": {
+                "typeMedia": "RadioContent",
+                "homepage": {
+                    "title": {
+                        "fi": "Kotisivu",
+                        "sv": "Hemsida"
+                    },
+                    "type": "WebPage",
+                    "url": "http:\/\/yle.fi\/radiosuomi",
+                    "serviceProvider": "http:\/\/yle.fi"
+                },
+                "indexDataModified": "2015-06-12T11:38:55.096+03:00",
+                "type": "RadioChannel",
+                "interaction": [
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "url": "https:\/\/m.facebook.com\/radiosuomi",
+                                "serviceProvider": "http:\/\/facebook.com"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/facebook.com",
+                        "url": "https:\/\/facebook.com\/radiosuomi"
+                    },
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "serviceProvider": "http:\/\/twitter.com",
+                                "url": "https:\/\/mobile.twitter.com\/radiosuomi"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/twitter.com",
+                        "url": "https:\/\/twitter.com\/radiosuomi"
+                    }
+                ],
+                "title": {
+                    "fi": "Yle Radio Suomi"
+                },
+                "region": "Finland",
+                "programGuide": [
+                    {
+                        "title": {
+                            "fi": "Ohjelmaopas",
+                            "sv": "Programguide"
+                        },
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/yle.fi",
+                        "url": "http:\/\/ohjelmaopas.yle.fi\/radio\/opas"
+                    }
+                ],
+                "language": [
+                    "fi"
+                ],
+                "active": true,
+                "id": "yle-radio-suomi",
+                "displayOrder": 3000,
+                "typeCreative": "Channel",
+                "audio": [
+                    {
+                        "language": [
+                            "fi"
+                        ],
+                        "format": [
+                            {
+                                "inScheme": "mediaformat-classification",
+                                "type": "Concept",
+                                "key": "stereo"
+                            }
+                        ],
+                        "type": "AudioTrack"
+                    }
+                ]
+            },
+            "delta": "1",
+            "partOf": {
+                "id": "12-1023-4-1265962",
+                "type": "RadioProgram",
+                "title": {
+                    "fi": "Y\u00f6radio - toiveiden y\u00f6."
+                }
+            }
+        },
+        {
+            "type": "NowPlaying",
+            "startTime": "2015-10-28T23:34:18+0200",
+            "endTime": "2015-10-28T23:38:13+0200",
+            "duration": "PT235S",
+            "content": {
+                "id": "12-1023-2-5506",
+                "type": "MusicRecording",
+                "title": {
+                    "unknown": "Kaukainen Maa"
+                },
+                "performer": [
+                    {
+                        "type": "agent",
+                        "name": "ARI KLEM"
+                    }
+                ]
+            },
+            "service": {
+                "typeMedia": "RadioContent",
+                "homepage": {
+                    "title": {
+                        "fi": "Kotisivu",
+                        "sv": "Hemsida"
+                    },
+                    "type": "WebPage",
+                    "url": "http:\/\/yle.fi\/radiosuomi",
+                    "serviceProvider": "http:\/\/yle.fi"
+                },
+                "indexDataModified": "2015-06-12T11:38:55.096+03:00",
+                "type": "RadioChannel",
+                "interaction": [
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "url": "https:\/\/m.facebook.com\/radiosuomi",
+                                "serviceProvider": "http:\/\/facebook.com"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/facebook.com",
+                        "url": "https:\/\/facebook.com\/radiosuomi"
+                    },
+                    {
+                        "title": {
+                            "fi": "Yle Radio Suomi"
+                        },
+                        "hasVersion": [
+                            {
+                                "title": {
+                                    "fi": "Yle Radio Suomi"
+                                },
+                                "device": "mobile",
+                                "type": "WebPage",
+                                "serviceProvider": "http:\/\/twitter.com",
+                                "url": "https:\/\/mobile.twitter.com\/radiosuomi"
+                            }
+                        ],
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/twitter.com",
+                        "url": "https:\/\/twitter.com\/radiosuomi"
+                    }
+                ],
+                "title": {
+                    "fi": "Yle Radio Suomi"
+                },
+                "region": "Finland",
+                "programGuide": [
+                    {
+                        "title": {
+                            "fi": "Ohjelmaopas",
+                            "sv": "Programguide"
+                        },
+                        "type": "WebPage",
+                        "serviceProvider": "http:\/\/yle.fi",
+                        "url": "http:\/\/ohjelmaopas.yle.fi\/radio\/opas"
+                    }
+                ],
+                "language": [
+                    "fi"
+                ],
+                "active": true,
+                "id": "yle-radio-suomi",
+                "displayOrder": 3000,
+                "typeCreative": "Channel",
+                "audio": [
+                    {
+                        "language": [
+                            "fi"
+                        ],
+                        "format": [
+                            {
+                                "inScheme": "mediaformat-classification",
+                                "type": "Concept",
+                                "key": "stereo"
+                            }
+                        ],
+                        "type": "AudioTrack"
+                    }
+                ]
+            },
+            "delta": "2",
+            "partOf": {
+                "id": "12-1023-4-1265962",
+                "type": "RadioProgram",
+                "title": {
+                    "fi": "Y\u00f6radio - toiveiden y\u00f6."
+                }
+            }
+        }
+    ]
+}
