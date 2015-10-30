@@ -132,8 +132,23 @@ $r=$this->executeGET('programs/items/'.$id.'.json');
 return json_decode($r);
 }
 
-public function programs_services()
+public function programs_services($type=false)
 {
+$q=array();
+switch ($type) {
+	case 'tvchannel':
+	case 'radiochannel':
+	case 'ondemandservice':
+	case 'webcastservice':
+		$q['type']=$type;
+	break;
+	case false:
+		// Ignore
+	break;
+	default:
+		throw new YleException('Invalid type requested', 404);
+	break;
+}
 $r=$this->executeGET('programs/services.json');
 return json_decode($r);
 }
