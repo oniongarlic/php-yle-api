@@ -93,6 +93,11 @@ $this->handleStatus($status, $error, $response);
 return $response;
 }
 
+protected function executeGETjson($endpoint, array $query=null, $assoc=false)
+{
+return json_decode($this->executeGET($endpoint, $query), $assoc);
+}
+
 protected function validate_pid($pid)
 {
 // XXX Check that input is x-yyyyy formated
@@ -122,14 +127,12 @@ return substr($tmp, 0, -ord($tmp[strlen($tmp)-1]));
 
 public function programs_items()
 {
-$r=$this->executeGET('programs/items.json');
-return json_decode($r);
+return $this->executeGETjson('programs/items.json');
 }
 
 public function programs_item($id)
 {
-$r=$this->executeGET('programs/items/'.$id.'.json');
-return json_decode($r);
+return $this->executeGETjson('programs/items/'.$id.'.json');
 }
 
 public function programs_services($type=false)
@@ -149,20 +152,17 @@ switch ($type) {
 		throw new YleException('Invalid type requested', 404);
 	break;
 }
-$r=$this->executeGET('programs/services.json');
-return json_decode($r);
+return $this->executeGETjson('programs/services.json');
 }
 
 public function programs_service($id)
 {
-$r=$this->executeGET('programs/services/'.$id.'.json');
-return json_decode($r);
+return $this->executeGETjson('programs/services/'.$id.'.json');
 }
 
 public function programs_nowplaying($id)
 {
-$r=$this->executeGET('programs/nowplaying/'.$id.'.json');
-return json_decode($r);
+return $this->executeGETjson('programs/nowplaying/'.$id.'.json');
 }
 
 /*************************************************************
@@ -175,8 +175,7 @@ $q=array(
 	'program_id'=>$pid,
 	'media_id'=>$mid
 );
-$r=$this->executeGET('tracking/streamstart', $q);
-return json_decode($r);
+return $this->executeGETjson('tracking/streamstart', $q);
 }
 
 /*************************************************************
@@ -202,8 +201,7 @@ $q=array(
 	'media_id'=>$mid,
 	'protocol'=>'HLS'
 );
-$r=$this->executeGET('media/playouts.json', $q);
-return json_decode($r);
+return $this->executeGETjson('media/playouts.json', $q);
 }
 
 }
