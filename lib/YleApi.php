@@ -166,6 +166,20 @@ return json_decode($r);
 }
 
 /*************************************************************
+ * Schedules
+ *************************************************************/
+
+public function schedules_now($pid=null)
+{
+$q=array();
+if (is_string($pid))
+	$q['service']=$pid;
+
+$r=$this->executeGET('schedules/now.json', $q);
+return json_decode($r);
+}
+
+/*************************************************************
  * Tracking
  *************************************************************/
 
