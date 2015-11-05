@@ -18,5 +18,12 @@ $c->set_debug(true);
 
 $a=$c->programs_nowplaying($pid);
 file_put_contents('nowplaying.json', json_encode($a, JSON_PRETTY_PRINT));
-print_r($a);
+
+$np=YleNowplaying::create($a);
+
+$cur=$np->getCurrent();
+print_r($cur);
+
+$isv=$np->isValid();
+print_r($isv);
 ?>

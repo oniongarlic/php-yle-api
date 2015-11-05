@@ -4,6 +4,98 @@ class YleException extends Exception { }
 class YleAuthException extends YleException { }
 class YleRateLimitException extends YleException { }
 
+/**
+ * YleNowPlaying
+ *
+ * Class to parse the interesting data from the nowplaying json structure
+ *
+ */
+class YleNowplaying
+{
+private $id;
+private $data;
+private $count;
+private $minDelta;
+private $maxDelta;
+
+private function __construct(stdClass $np)
+{
+$this->data=array();
+foreach ($np->data as $d) {
+	// Check that provided data looks like what we need
+	if (!property_exists($d, 'delta'))
+		throw new YleException('Invalid data delta provided');
+	if (!property_exists($d, 'type'))
+		throw new YleException('Invalid data type provided');
+	if ($d->type!='NowPlaying')
+		throw new YleException('Data is not nowplaying');
+
+	$delta=$d->delta;
+	$this->data[$delta]=array(
+		'id'=>$d->content->id,
+		'start'=>DateTime::createFromFormat('Y-m-d\TH:i:sT', $d->startTime),
+		'end'=>DateTime::createFromFormat('Y-m-d\TH:i:sT', $d->endTime),
+		'duration'=>new DateInterval($d->duration),
+		'program'=>$d->partOf->title,
+		'title'=>$d->content->title->unknown,
+		'performer'=>$d->performer[0]
+	);
+}
+$this->count=count($this->data);
+$this->minDelta=min(array_keys($this->data));
+$this->maxDelta=max(array_keys($this->data));
+print_r($this);
+}
+
+/**
+ * isValid
+ *
+ * Check if the data is still relevant (last song has not been played yet)
+ * This is not perfect as local time might differ from server time.
+ *
+ * Return: true if there are song still to be played, false if all songs have been played
+ */
+public function isValid()
+{
+$tmp=$this->data[$this->maxDelta];
+$now=new DateTime();
+return $tmp['end']<$now;
+}
+
+public function getCurrent()
+{
+$now=new DateTime();
+foreach ($this->data as $d) {
+	print_r($d);
+	if ($d['start']<=$now && $d['end']>=$now)
+		return $d;
+}
+return false;
+}
+
+public function get($delta)
+{
+if (isset($this->data[$delta]))
+	return $this->data[$delta];
+return false;
+}
+
+/**
+ * create
+ *
+ * Creates an nowplaying object from the provided stdClass object from the nowplaying json data.
+ *
+ * Returns: An object with the nowplaying data
+ */
+public static function create(stdClass $np)
+{
+if (!property_exists($np, 'data'))
+	throw new YleException('Invalid data provided');
+return new YleNowPlaying($np);
+}
+
+}
+
 class YleAPIClient
 {
 // API Url
@@ -93,6 +185,11 @@ $this->handleStatus($status, $error, $response);
 return $response;
 }
 
+protected function executeGETjson($endpoint, array $query=null, $assoc=false)
+{
+return json_decode($this->executeGET($endpoint, $query), $assoc);
+}
+
 protected function validate_pid($pid)
 {
 // XXX Check that input is x-yyyyy formated
@@ -122,14 +219,12 @@ return substr($tmp, 0, -ord($tmp[strlen($tmp)-1]));
 
 public function programs_items()
 {
-$r=$this->executeGET('programs/items.json');
-return json_decode($r);
+return $this->executeGETjson('programs/items.json');
 }
 
 public function programs_item($id)
 {
-$r=$this->executeGET('programs/items/'.$id.'.json');
-return json_decode($r);
+return $this->executeGETjson('programs/items/'.$id.'.json');
 }
 
 public function programs_services($type=false)
@@ -149,20 +244,17 @@ switch ($type) {
 		throw new YleException('Invalid type requested', 404);
 	break;
 }
-$r=$this->executeGET('programs/services.json');
-return json_decode($r);
+return $this->executeGETjson('programs/services.json');
 }
 
 public function programs_service($id)
 {
-$r=$this->executeGET('programs/services/'.$id.'.json');
-return json_decode($r);
+return $this->executeGETjson('programs/services/'.$id.'.json');
 }
 
 public function programs_nowplaying($id)
 {
-$r=$this->executeGET('programs/nowplaying/'.$id.'.json');
-return json_decode($r);
+return $this->executeGETjson('programs/nowplaying/'.$id.'.json');
 }
 
 /*************************************************************
@@ -189,8 +281,7 @@ $q=array(
 	'program_id'=>$pid,
 	'media_id'=>$mid
 );
-$r=$this->executeGET('tracking/streamstart', $q);
-return json_decode($r);
+return $this->executeGETjson('tracking/streamstart', $q);
 }
 
 /*************************************************************
@@ -216,8 +307,7 @@ $q=array(
 	'media_id'=>$mid,
 	'protocol'=>'HLS'
 );
-$r=$this->executeGET('media/playouts.json', $q);
-return json_decode($r);
+return $this->executeGETjson('media/playouts.json', $q);
 }
 
 }
