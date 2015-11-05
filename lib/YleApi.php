@@ -4,6 +4,66 @@ class YleException extends Exception { }
 class YleAuthException extends YleException { }
 class YleRateLimitException extends YleException { }
 
+/**
+ * YleNowPlaying
+ *
+ * Class to parse the interesting data from the nowplaying json structure
+ *
+ */
+class YleNowplaying
+{
+private $id;
+private $data;
+
+private function __construct(stdClass $np)
+{
+$this->data=array();
+foreach ($np->data as $d) {
+	// Check that provided data looks like what we need
+	if (!property_exists($d, 'delta'))
+		throw new YleException('Invalid data delta provided');
+	if (!property_exists($d, 'type'))
+		throw new YleException('Invalid data type provided');
+	if ($d->type!='NowPlaying')
+		throw new YleException('Data is not nowplaying');
+
+	$delta=$d->delta;
+	$this->data[$delta]=array(
+		'id'=>$d->content->id,
+		'start'=>DateTime::createFromFormat('Y-m-d\TH:i:sT', $d->startTime),
+		'end'=>DateTime::createFromFormat('Y-m-d\TH:i:sT', $d->endTime),
+		'duration'=>new DateInterval($d->duration),
+		'program'=>$d->partOf->title,
+		'title'=>$d->content->title->unknown,
+		'performer'=>$d->performer[0]
+	);
+}
+print_r($this->data);
+}
+
+public function get($delta)
+{
+if (isset($this->data[$delta]))
+	return $this->data[$delta];
+return false;
+}
+
+/**
+ * create
+ *
+ * Creates an nowplaying object from the provided stdClass object from the nowplaying json data.
+ *
+ * Returns: An object with the nowplaying data
+ */
+public static function create(stdClass $np)
+{
+if (!property_exists($np, 'data'))
+	throw new YleException('Invalid data provided');
+return new YleNowPlaying($np);
+}
+
+}
+
 class YleAPIClient
 {
 // API Url
