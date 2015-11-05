@@ -14,6 +14,9 @@ class YleNowplaying
 {
 private $id;
 private $data;
+private $count;
+private $minDelta;
+private $maxDelta;
 
 private function __construct(stdClass $np)
 {
@@ -38,7 +41,36 @@ foreach ($np->data as $d) {
 		'performer'=>$d->performer[0]
 	);
 }
-print_r($this->data);
+$this->count=count($this->data);
+$this->minDelta=min(array_keys($this->data));
+$this->maxDelta=max(array_keys($this->data));
+print_r($this);
+}
+
+/**
+ * isValid
+ *
+ * Check if the data is still relevant (last song has not been played yet)
+ * This is not perfect as local time might differ from server time.
+ *
+ * Return: true if there are song still to be played, false if all songs have been played
+ */
+public function isValid()
+{
+$tmp=$this->data[$this->maxDelta];
+$now=new DateTime();
+return $tmp['end']<$now;
+}
+
+public function getCurrent()
+{
+$now=new DateTime();
+foreach ($this->data as $d) {
+	print_r($d);
+	if ($d['start']<=$now && $d['end']>=$now)
+		return $d;
+}
+return false;
 }
 
 public function get($delta)
