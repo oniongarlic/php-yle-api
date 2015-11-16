@@ -33,18 +33,24 @@ foreach ($np->data as $d) {
 	$delta=$d->delta;
 	$this->data[$delta]=array(
 		'id'=>$d->content->id,
+		'delta'=>$delta,
 		'start'=>DateTime::createFromFormat('Y-m-d\TH:i:sT', $d->startTime),
 		'end'=>DateTime::createFromFormat('Y-m-d\TH:i:sT', $d->endTime),
 		'duration'=>new DateInterval($d->duration),
 		'program'=>$d->partOf->title,
 		'title'=>$d->content->title->unknown,
-		'performer'=>$d->performer[0]
+		'performer'=>$d->content->performer[0]->name
 	);
 }
+$this->id=$np->meta->service;
 $this->count=count($this->data);
 $this->minDelta=min(array_keys($this->data));
 $this->maxDelta=max(array_keys($this->data));
-print_r($this);
+}
+
+public function getServiceId()
+{
+return $this->id;
 }
 
 /**
@@ -59,14 +65,13 @@ public function isValid()
 {
 $tmp=$this->data[$this->maxDelta];
 $now=new DateTime();
-return $tmp['end']<$now;
+return $tmp['end']>$now;
 }
 
 public function getCurrent()
 {
 $now=new DateTime();
 foreach ($this->data as $d) {
-	print_r($d);
 	if ($d['start']<=$now && $d['end']>=$now)
 		return $d;
 }
@@ -89,7 +94,11 @@ return false;
  */
 public static function create(stdClass $np)
 {
+if (!property_exists($np, 'apiVersion'))
+	throw new YleException('Invalid data provided');
 if (!property_exists($np, 'data'))
+	throw new YleException('Invalid data provided');
+if (!property_exists($np, 'meta'))
 	throw new YleException('Invalid data provided');
 return new YleNowPlaying($np);
 }
