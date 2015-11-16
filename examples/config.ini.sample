@@ -2,3 +2,6 @@
 app_id='YOUR_APP_ID'
 app_key='YOUR_APP_KEY'
 decrypt='YOUR_DECRYPT_KEY'
+
+[MQTT]
+host=localhost
