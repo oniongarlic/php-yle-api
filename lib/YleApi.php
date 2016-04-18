@@ -146,6 +146,16 @@ public function set_debug($bool)
 $this->debug=$bool;
 }
 
+public function setMultibitrate($v)
+{
+$this->multibitrate=$v;
+}
+
+public function setHardsubtitles($v)
+{
+$this->hardsubtitles=$v;
+}
+
 protected function dumpDebug($endpoint, $data=null)
 {
 if (!$this->debug)

@@ -16,6 +16,7 @@ $api=$config['Generic'];
 
 $c=new YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
 $c->set_debug(true);
+$c->setMultibitrate(false);
 
 $a=$c->programs_item($pid);
 print_r($a);
@@ -28,11 +29,14 @@ if ($mid===false)
 $a=$c->media_playouts($pid, $mid);
 print_r($a);
 
-$eurl=$a->data[0]->url;
+$mdc=count($a->data);
 
-$url=$c->media_url_decrypt($eurl);
+printf("Media URLs are:\n");
 
-printf("Media URL is:\n\n%s\n\n", $url);
+foreach ($a->data as $media) {
+	$url=$c->media_url_decrypt($media->url);
+	printf("(%d/%d) %s\n", $media->width, $media->height, $url);
+}
 
-system("avplay \"$url\"");
+// system("avplay \"$url\"");
 ?>
