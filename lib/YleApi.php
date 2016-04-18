@@ -107,6 +107,18 @@ return new YleNowPlaying($np);
 
 }
 
+/**
+ */
+class YleQuery
+{
+protected $q; // Search string
+protected $mediaobject; // audio or video
+protected $downloadable; // true/false
+protected $availability; // "ondemand", "future-ondemand", "future-scheduled" and "in-future".
+protected $language; // fi,sv
+protected $region; // fi,world
+}
+
 class YleAPIClient
 {
 // API Url
@@ -239,9 +251,13 @@ return substr($tmp, 0, -ord($tmp[strlen($tmp)-1]));
  * Programs
  *************************************************************/
 
-public function programs_items()
+public function programs_items($offset=0, $limit=25)
 {
-return $this->executeGETjson('programs/items.json');
+$q=array(
+	'limit'=>$limit,
+	'offset'=>$offset
+);
+return $this->executeGETjson('programs/items.json', $q);
 }
 
 public function programs_item($id)
