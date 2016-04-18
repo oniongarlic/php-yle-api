@@ -118,6 +118,10 @@ protected $decrypt_key;
 
 protected $debug=false;
 
+private $format='HLS'; // possible values are HLS, HDS, PMD or RTMPE
+private $multibitrate=true;
+private $hardsubtitles=true;
+
 function __construct($id, $key, $decrypt)
 {
 $this->app_id=$id;
@@ -201,6 +205,11 @@ return $response;
 protected function executeGETjson($endpoint, array $query=null, $assoc=false)
 {
 return json_decode($this->executeGET($endpoint, $query), $assoc);
+}
+
+private function getBoolString($v)
+{
+return $v===true ? 'true' : 'false';
 }
 
 protected function validate_pid($pid)
@@ -318,8 +327,14 @@ public function media_playouts($pid, $mid)
 $q=array(
 	'program_id'=>$pid,
 	'media_id'=>$mid,
-	'protocol'=>'HLS'
+	'protocol'=>$this->format
 );
+
+if (is_bool($this->multibitrate))
+	$q['multibitrate']=$this->getBoolString($this->multibitrate);
+if (is_bool($this->hardsubtitles))
+	$q['hardsubtitles']=$this->getBoolString($this->hardsubtitles);
+
 return $this->executeGETjson('media/playouts.json', $q);
 }
 
