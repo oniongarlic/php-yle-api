@@ -3,6 +3,8 @@
 class YleException extends Exception { }
 class YleAuthException extends YleException { }
 class YleRateLimitException extends YleException { }
+class YleTypeException extends YleException { }
+class YleNotFoundException extends YleException { }
 
 /**
  * YleNowPlaying
@@ -161,6 +163,8 @@ switch ($status) {
 		throw new YleRateLimitException($response, $status);
 	case 403:
 		throw new YleAuthException($response, $status);
+	case 404:
+		throw new YleNotFoundException($response, $status);
 	default:
 		throw new YleException($response, $status);
 }
@@ -250,7 +254,7 @@ switch ($type) {
 		// Ignore
 	break;
 	default:
-		throw new YleException('Invalid type requested', 404);
+		throw new YleTypeException('Invalid program type requested', 404);
 	break;
 }
 return $this->executeGETjson('programs/services.json');
