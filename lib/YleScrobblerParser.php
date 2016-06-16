@@ -32,8 +32,11 @@ $items=$x->query($q);
 if (is_null($items))
 	return false;
 
-$qa=".//*[@itemprop='byArtist']/*[@itemprop='name']";
-$qs=".//*[@itemprop='name']";
+$qa=".//*[@itemprop='byArtist']/span[@itemprop='name']";
+$qs=".//span[@itemprop='name' and @class='song']";
+$qd=".//*[@itemprop='duration']";
+$qt=".//span[@class='time']";
+$qp=".//span[@class='program']";
 
 foreach ($items as $item) {
 	$s=array();
@@ -41,18 +44,28 @@ foreach ($items as $item) {
 
 	$item1=$ix->query($qa, $item);
 	$item2=$ix->query($qs, $item);
+	$item3=$ix->query($qd, $item);
+	$item4=$ix->query($qt, $item);
+	$item5=$ix->query($qp, $item);
 
 	$artist=$item1->item(0)->nodeValue;
 	$song=$item2->item(0)->nodeValue;
+	$duration=$item3->item(0)->nodeValue; // XXX: Nope..
+	$time=$item4->item(0)->nodeValue;
+	$program=$item5->item(0)->nodeValue;
 
-	$s=array('artist'=>$artist, 'song'=>$song);
-
-	print_r($s);
+	$s=array('artist'=>$artist,
+		'song'=>$song,
+		'program'=>$program,
+		'time'=>$time,
+		'duration'=>$duration);
 
 	$this->data[]=$s;
 }
 
-return $res ? true : false;
+print_r($this->data);
+
+return count($this->data)>0 ? true : false;
 }
 
 public function getPlaylist()
