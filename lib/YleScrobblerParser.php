@@ -1,4 +1,5 @@
 <?php
+namespace PYle;
 
 /**
  * Class that parses a YLE playlist HTML page content for 
@@ -18,14 +19,14 @@ private $doc;
 function __construct()
 {
 $this->data=array();
-$this->doc = new DOMDocument();
+$this->doc = new \DOMDocument();
 }
 
 public function parseHTML($html)
 {
 $this->data=array();
 $r=@$this->doc->loadHTML($html);
-$x = new DOMXpath($this->doc);
+$x = new \DOMXpath($this->doc);
 $it=htmlspecialchars('http://schema.org/MusicRecording');
 $q="//li[@itemtype='".$it."']";
 $items=$x->query($q);
@@ -40,7 +41,7 @@ $qp=".//span[@class='program']";
 
 foreach ($items as $item) {
 	$s=array();
-	$ix=new DOMXpath($this->doc);
+	$ix=new \DOMXpath($this->doc);
 
 	$item1=$ix->query($qa, $item);
 	$item2=$ix->query($qs, $item);

@@ -1,4 +1,5 @@
 <?php
+namespace PYle;
 
 class YleException extends Exception { }
 class YleAuthException extends YleException { }
