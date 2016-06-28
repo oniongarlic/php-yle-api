@@ -1,0 +1,27 @@
+<li itemprop="track" itemscope="" itemtype="http://schema.org/MusicRecording">
+
+<span class="time">16:08</span>
+
+<div class="ydd-scrobbler-item">
+
+<span class="ydd-scrobbler-track-info__artist" itemprop="byArtist" itemscope itemtype="http://schema.org/MusicGroup">
+<span itemprop="name"><a href="/artist/linkin-park">Linkin Park</a></span>
+<meta itemprop="url" content="artist/linkin-park"/>
+</span>
+
+<span class="song" itemprop="name"><a href="/artist/linkin-park/end">In the end</a></a></span>
+
+<span class="ydd-spare-items__toggle ydd-scrobbler-item__toggle"></span>
+</div><!--/ ydd-scrobbler-item -->
+<div class="ydd-scrobbler-track-info"><span class="ydd-scrobbler-track-info__duration">
+<meta itemprop="duration" content="PT3M36S"/>03:36</span>
+
+<span class="amount active">
+<span class="playcount">40</span>
+</span>
+<span class="program"><a href="/spellista/2013-06-07/yle-x3m/stiftelsen">Stiftelsen</a></span>
+<span class="channelname"><a href="/spellista/2013-06-07/yle-x3m">Yle X3M</a></span>
+</div><!--/ ydd-scrobbler-track-info -->
+
+<meta itemprop="url" content="artist/linkin-park/end"/>
+</li>
