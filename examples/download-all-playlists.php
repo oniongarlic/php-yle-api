@@ -7,7 +7,7 @@ require_once('../lib/YleScrobblerParser.php');
 // Source is https://svenska.yle.fi/spellista/yle-x3m/2013-06-07
 
 $from=new DateTime('2013-06-07');
-$to=new DateTime('2013-06-10');
+$to=new DateTime();
 
 $base='https://svenska.yle.fi/spellista/yle-x3m/';
 $cachedir='./cache/';
@@ -15,6 +15,8 @@ $cachedir='./cache/';
 $artists=array();
 $programs=array();
 $playlists=array();
+
+printf("Downloading from %s until %s\n", $from->format('Y-m-d'), $to->format('Y-m-d'));
 
 while ($from <= $to) {
  $p=new PYle\YleScrobblerParser();
@@ -30,7 +32,7 @@ while ($from <= $to) {
  if (!file_exists($cf)) {
   $data=file_get_contents($url);
   file_put_contents($cf, $data);
-  sleep(1);
+  //sleep(1);
  } else {
   $data=file_get_contents($cf);
  }
