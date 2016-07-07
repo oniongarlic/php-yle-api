@@ -15,11 +15,30 @@ class YleScrobblerParser
 {
 private $data;
 private $doc;
+private $programs;
+private $artists;
 
 function __construct()
 {
 $this->data=array();
+$this->programs=array();
+$this->artists=array();
 $this->doc = new \DOMDocument();
+}
+
+public function getPlaylist()
+{
+return $this->data;
+}
+
+public function getPrograms()
+{
+return $this->programs;
+}
+
+public function getArtists()
+{
+return $this->artists;
 }
 
 public function parseHTML($html)
@@ -35,7 +54,7 @@ if (is_null($items))
 
 $qa=".//*[@itemprop='byArtist']/span[@itemprop='name']";
 $qs=".//span[@itemprop='name' and @class='song']";
-$qd=".//*[@itemprop='duration']";
+$qd=".//*[@itemprop='duration']/@content";
 $qt=".//span[@class='time']";
 $qp=".//span[@class='program']";
 
@@ -51,7 +70,7 @@ foreach ($items as $item) {
 
 	$artist=$item1->item(0)->nodeValue;
 	$song=$item2->item(0)->nodeValue;
-	$duration=$item3->item(0)->nodeValue; // XXX: Nope..
+	$duration=$item3->item(0)->nodeValue;
 	$time=$item4->item(0)->nodeValue;
 	$program=$item5->item(0)->nodeValue;
 
@@ -62,16 +81,12 @@ foreach ($items as $item) {
 		'duration'=>$duration);
 
 	$this->data[]=$s;
-}
 
-print_r($this->data);
+	$this->artists[]=$artist;
+	$this->programs[]=$program;
+}
 
 return count($this->data)>0 ? true : false;
-}
-
-public function getPlaylist()
-{
-return $this->data;
 }
 
 }
