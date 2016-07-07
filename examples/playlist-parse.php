@@ -2,7 +2,7 @@
 <?php
 require_once('../lib/YleScrobblerParser.php');
 
-$r=file_get_contents('playlist-test.html');
+$r=file_get_contents('../data/playlist-test.html');
 
 $p=new PYle\YleScrobblerParser();
 
