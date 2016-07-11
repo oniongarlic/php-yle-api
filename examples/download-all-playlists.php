@@ -23,17 +23,18 @@ while ($from <= $to) {
 
  $ymd=$from->format('Y-m-d');
 
- echo "$ymd\n";
+ echo "$ymd";
 
  $url=sprintf('%s%s', $base, $ymd);
 
  $cf=$cachedir.$ymd;
 
  if (!file_exists($cf)) {
+  echo "-c\d";
   $data=file_get_contents($url);
   file_put_contents($cf, $data);
-  //sleep(1);
  } else {
+  echo "-c\n";
   $data=file_get_contents($cf);
  }
 
@@ -42,30 +43,41 @@ while ($from <= $to) {
  $s=$p->getPlaylist();
  $playlists[$ymd]=$s;
 
- $artists+=array_unique($p->getArtists());
- $programs+=array_unique($p->getPrograms());
+ $artists=array_merge($artists, array_unique($p->getArtists()));
+ $programs=array_merge($programs, array_unique($p->getPrograms()));
 
  $from->add(new DateInterval('P1D'));
 }
 
+sort($artists);
+sort($programs);
+
+$artists=array_unique($artists);
+$programs=array_unique($programs);
+
+// Save playlists
 $fp = fopen('playlist.csv', 'w');
 foreach ($playlists as $date=>$songs) {
  foreach ($songs as $song) {
   $tmp=array($date);
   $tmp+=$song;
-  print_r($tmp);
   fputcsv($fp, $tmp);
  }
 }
 fclose($fp);
 
+// Save artists
 $fp = fopen('artists.csv', 'w');
-foreach ($artists as $c=>$a) {
- fputcsv($fp, array($a, $c));
+foreach ($artists as $a) {
+ fputcsv($fp, array($a));
 }
 fclose($fp);
 
-//print_r($artists);
-//print_r($playlists);
+// Save progams that played
+$fp = fopen('programs.csv', 'w');
+foreach ($programs as $a) {
+ fputcsv($fp, array($a));
+}
+fclose($fp);
 
 ?>
