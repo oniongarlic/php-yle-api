@@ -57,9 +57,11 @@ $programs=array_unique($programs);
 
 // Save playlists
 $fp = fopen('playlist.csv', 'w');
+fputcsv($fp, array('date','sauniqid','artist','song','program','time','duration'));
 foreach ($playlists as $date=>$songs) {
  foreach ($songs as $song) {
   $tmp=array($date);
+  $tmp[]=hash_hmac('sha256', $song['song'], $song['artist'], false);
   $tmp+=$song;
   fputcsv($fp, $tmp);
  }
