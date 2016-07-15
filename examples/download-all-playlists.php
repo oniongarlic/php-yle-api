@@ -6,6 +6,55 @@ require_once('../lib/YleScrobblerParser.php');
 // Base url is https://svenska.yle.fi/spellista/yle-x3m/
 // Source is https://svenska.yle.fi/spellista/yle-x3m/2013-06-07
 
+// Save artists
+function save_artists($artists)
+{
+$fp = fopen('artists.csv', 'w');
+fputcsv($fp, array('artist'));
+foreach ($artists as $a) {
+ fputcsv($fp, array($a));
+}
+fclose($fp);
+}
+
+function save_songs($songs)
+{
+$fp = fopen('songs.csv', 'w');
+fputcsv($fp, array('s-hash','artist','song','count'));
+foreach ($songs as $id=>$s) {
+ fputcsv($fp, array($id, $s['artist'], $s['song'], $s['count']));
+}
+fclose($fp);
+}
+
+// Save progams that played
+function save_programs($programs)
+{
+$fp = fopen('programs.csv', 'w');
+fputcsv($fp, array('program'));
+foreach ($programs as $a) {
+ fputcsv($fp, array($a));
+}
+fclose($fp);
+}
+
+// Save playlists
+function save_playlists($playlists)
+{
+$fp = fopen('playlist.csv', 'w');
+fputcsv($fp, array('date','sa-hash','artist','song','program','time','duration'));
+foreach ($playlists as $date=>$songs) {
+ foreach ($songs as $song) {
+  $tmp=array($date);
+  $tmp+=$song;
+  fputcsv($fp, $tmp);
+ }
+}
+fclose($fp);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 $from=new DateTime('2013-06-07');
 $to=new DateTime();
 
@@ -15,12 +64,12 @@ $cachedir='./cache/';
 $artists=array();
 $programs=array();
 $playlists=array();
+$songs=array();
 
 printf("Downloading from %s until %s\n", $from->format('Y-m-d'), $to->format('Y-m-d'));
 
+$p=new PYle\YleScrobblerParser();
 while ($from <= $to) {
- $p=new PYle\YleScrobblerParser();
-
  $ymd=$from->format('Y-m-d');
 
  echo "$ymd";
@@ -28,58 +77,42 @@ while ($from <= $to) {
  $url=sprintf('%s%s', $base, $ymd);
 
  $cf=$cachedir.$ymd;
+ $cached=false;
 
  if (!file_exists($cf)) {
-  echo "-c\d";
+  echo "-c";
   $data=file_get_contents($url);
-  file_put_contents($cf, $data);
+  $cached=true;
  } else {
-  echo "-c\n";
+  echo "-d";
   $data=file_get_contents($cf);
  }
 
- $p->parseHTML($data);
+ if (!$p->parseHTML($data)) {
+  echo "?";
+ } else if (!$cached) {
+  // Cache the downloaded data only if parsing was ok
+  echo "!";
+  file_put_contents($cf, $data);
+ }
+
+ echo "\n";
 
  $s=$p->getPlaylist();
  $playlists[$ymd]=$s;
 
- $artists=array_merge($artists, array_unique($p->getArtists()));
- $programs=array_merge($programs, array_unique($p->getPrograms()));
-
  $from->add(new DateInterval('P1D'));
 }
+
+$artists=$p->getArtists();
+$programs=$p->getPrograms();
 
 sort($artists);
 sort($programs);
 
-$artists=array_unique($artists);
-$programs=array_unique($programs);
-
-// Save playlists
-$fp = fopen('playlist.csv', 'w');
-fputcsv($fp, array('date','sauniqid','artist','song','program','time','duration'));
-foreach ($playlists as $date=>$songs) {
- foreach ($songs as $song) {
-  $tmp=array($date);
-  $tmp[]=hash_hmac('sha256', $song['song'], $song['artist'], false);
-  $tmp+=$song;
-  fputcsv($fp, $tmp);
- }
-}
-fclose($fp);
-
-// Save artists
-$fp = fopen('artists.csv', 'w');
-foreach ($artists as $a) {
- fputcsv($fp, array($a));
-}
-fclose($fp);
-
-// Save progams that played
-$fp = fopen('programs.csv', 'w');
-foreach ($programs as $a) {
- fputcsv($fp, array($a));
-}
-fclose($fp);
+save_playlists($playlists);
+save_artists($artists);
+save_songs($p->getSongs());
+save_programs($programs);
 
 ?>
