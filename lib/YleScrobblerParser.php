@@ -17,12 +17,14 @@ private $data;
 private $doc;
 private $programs;
 private $artists;
+private $songs;
 
 function __construct()
 {
 $this->data=array();
 $this->programs=array();
 $this->artists=array();
+$this->songs=array();
 $this->doc = new \DOMDocument();
 }
 
@@ -39,6 +41,20 @@ return $this->programs;
 public function getArtists()
 {
 return $this->artists;
+}
+
+public function getSongs()
+{
+return $this->songs;
+}
+
+private function addSong($song, $artist, $hash)
+{
+if (array_key_exists($hash, $this->songs)) {
+	$this->songs[$hash]['count']++;
+	return;
+}
+$this->songs[$hash]=array('count'=>1, 'song'=>$song, 'artist'=>$artist);
 }
 
 public function parseHTML($html)
@@ -74,16 +90,19 @@ foreach ($items as $item) {
 	$time=$item4->item(0)->nodeValue;
 	$program=$item5->item(0)->nodeValue;
 
-	$s=array('artist'=>$artist,
+	$sahash=hash_hmac('sha256', $song, $artist, false);
+
+	$s=array('hash'=>$sahash,
+		'artist'=>$artist,
 		'song'=>$song,
 		'program'=>$program,
 		'time'=>$time,
 		'duration'=>$duration);
 
 	$this->data[]=$s;
-
 	$this->artists[]=$artist;
 	$this->programs[]=$program;
+	$this->addSong($song, $artist, $hash);
 }
 
 return count($this->data)>0 ? true : false;
