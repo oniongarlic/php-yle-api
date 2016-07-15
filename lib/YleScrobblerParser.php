@@ -105,6 +105,10 @@ foreach ($items as $item) {
 	$this->addSong($song, $artist, $hash);
 }
 
+// XXX: no..nonono!!
+$this->artists=array_unique($this->artists);
+$this->programs=array_unique($this->programs);
+
 return count($this->data)>0 ? true : false;
 }
 
