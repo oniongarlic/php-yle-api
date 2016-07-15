@@ -102,7 +102,7 @@ foreach ($items as $item) {
 	$this->data[]=$s;
 	$this->artists[]=$artist;
 	$this->programs[]=$program;
-	$this->addSong($song, $artist, $hash);
+	$this->addSong($song, $artist, $sahash);
 }
 
 // XXX: no..nonono!!
