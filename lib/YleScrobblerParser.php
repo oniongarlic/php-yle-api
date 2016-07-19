@@ -91,6 +91,7 @@ foreach ($items as $item) {
 	$program=$item5->item(0)->nodeValue;
 
 	$sahash=hash_hmac('sha256', $song, $artist, false);
+	$ahash=hash('sha256', $artist, false);
 
 	$s=array('hash'=>$sahash,
 		'artist'=>$artist,
@@ -100,13 +101,19 @@ foreach ($items as $item) {
 		'duration'=>$duration);
 
 	$this->data[]=$s;
-	$this->artists[]=$artist;
+
+	if (strstr($artist, ' & ')) {
+		$ra=explode(' & ', $artist);
+		$this->artists[$ahash]=array($artist, implode(';',$ra));
+	} else {
+		$this->artists[$ahash]=array($artist, '');
+	}
+
 	$this->programs[]=$program;
 	$this->addSong($song, $artist, $sahash);
 }
 
 // XXX: no..nonono!!
-$this->artists=array_unique($this->artists);
 $this->programs=array_unique($this->programs);
 
 return count($this->data)>0 ? true : false;
