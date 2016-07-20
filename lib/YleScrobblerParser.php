@@ -73,6 +73,7 @@ $qs=".//span[@itemprop='name' and @class='song']";
 $qd=".//*[@itemprop='duration']/@content";
 $qt=".//span[@class='time']";
 $qp=".//span[@class='program']";
+$qc=".//span[@class='channelname']";
 
 foreach ($items as $item) {
 	$s=array();
@@ -83,12 +84,14 @@ foreach ($items as $item) {
 	$item3=$ix->query($qd, $item);
 	$item4=$ix->query($qt, $item);
 	$item5=$ix->query($qp, $item);
+	$item6=$ix->query($qc, $item);
 
 	$artist=$item1->item(0)->nodeValue;
 	$song=$item2->item(0)->nodeValue;
 	$duration=$item3->item(0)->nodeValue;
 	$time=$item4->item(0)->nodeValue;
 	$program=$item5->item(0)->nodeValue;
+	$channel=$item6->item(0)->nodeValue;
 
 	$sahash=hash_hmac('sha256', $song, $artist, false);
 	$ahash=hash('sha256', $artist, false);
@@ -97,6 +100,7 @@ foreach ($items as $item) {
 		'artist'=>$artist,
 		'song'=>$song,
 		'program'=>$program,
+		'channel'=>$channel,
 		'time'=>$time,
 		'duration'=>$duration);
 
@@ -104,7 +108,7 @@ foreach ($items as $item) {
 
 	if (strstr($artist, ' & ')) {
 		$ra=explode(' & ', $artist);
-		$this->artists[$ahash]=array($artist, implode(';',$ra));
+		$this->artists[$ahash]=array_merge(array($artist, implode(';',$ra)), $ra);
 	} else {
 		$this->artists[$ahash]=array($artist, '');
 	}
