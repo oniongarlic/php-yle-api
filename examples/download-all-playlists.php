@@ -10,9 +10,11 @@ require_once('../lib/YleScrobblerParser.php');
 function save_artists($artists)
 {
 $fp = fopen('artists.csv', 'w');
-fputcsv($fp, array('artist'));
-foreach ($artists as $a) {
- fputcsv($fp, array($a));
+fputcsv($fp, array('a-hash','artist','related-all','r1','r2','r3','r4','r5'));
+foreach ($artists as $id => $a) {
+ $t=array_merge(array($id), $a);
+ if (count($t)>7) echo $a[0]." AR>7! \n";
+ fputcsv($fp, $t);
 }
 fclose($fp);
 }
@@ -42,10 +44,10 @@ fclose($fp);
 function save_playlists($playlists)
 {
 $fp = fopen('playlist.csv', 'w');
-fputcsv($fp, array('date','sa-hash','artist','song','program','time','duration'));
+fputcsv($fp, array('date','sa-hash','artist','song','program','channel','time','duration'));
 foreach ($playlists as $date=>$songs) {
  foreach ($songs as $song) {
-  $tmp=array($date);
+  $tmp=array($date.' '.$song['time']);
   $tmp+=$song;
   fputcsv($fp, $tmp);
  }
@@ -57,6 +59,7 @@ fclose($fp);
 
 $from=new DateTime('2013-06-07');
 $to=new DateTime();
+//$to=new DateTime('2013-06-18');
 
 $base='https://svenska.yle.fi/spellista/yle-x3m/';
 $cachedir='./cache/';
@@ -80,17 +83,17 @@ while ($from <= $to) {
  $cached=false;
 
  if (!file_exists($cf)) {
-  echo "-c";
-  $data=file_get_contents($url);
-  $cached=true;
- } else {
   echo "-d";
+  $data=file_get_contents($url);
+ } else {
+  echo "-c";
+  $cached=true;
   $data=file_get_contents($cf);
  }
 
  if (!$p->parseHTML($data)) {
   echo "?";
- } else if (!$cached) {
+ } else if (!$cached && ($from<$to)) {
   // Cache the downloaded data only if parsing was ok
   echo "!";
   file_put_contents($cf, $data);
@@ -107,7 +110,6 @@ while ($from <= $to) {
 $artists=$p->getArtists();
 $programs=$p->getPrograms();
 
-sort($artists);
 sort($programs);
 
 save_playlists($playlists);
