@@ -6,8 +6,8 @@ require_once('../lib/YleScrobblerParser.php');
 // Base url is https://svenska.yle.fi/spellista/yle-x3m/
 // Source is https://svenska.yle.fi/spellista/yle-x3m/2013-06-07
 
-// Save artists
-function save_artists($artists)
+// Save unique artists
+function save_artists(array $artists)
 {
 $fp = fopen('artists.csv', 'w');
 fputcsv($fp, array('a-hash','artist','related-all','r1','r2','r3','r4','r5'));
@@ -19,18 +19,20 @@ foreach ($artists as $id => $a) {
 fclose($fp);
 }
 
-function save_songs($songs)
+// Save unique songs, with artist details
+function save_songs(array $songs)
 {
+
 $fp = fopen('songs.csv', 'w');
-fputcsv($fp, array('s-hash','artist','song','count'));
+fputcsv($fp, array('s-hash','a-hash','artist','song','count'));
 foreach ($songs as $id=>$s) {
- fputcsv($fp, array($id, $s['artist'], $s['song'], $s['count']));
+ fputcsv($fp, array($id, $s['ahash'], $s['artist'], $s['song'], $s['count']));
 }
 fclose($fp);
 }
 
-// Save progams that played
-function save_programs($programs)
+// Save unique progams that played
+function save_programs(array $programs)
 {
 $fp = fopen('programs.csv', 'w');
 fputcsv($fp, array('program'));
@@ -41,7 +43,7 @@ fclose($fp);
 }
 
 // Save playlists
-function save_playlists($playlists)
+function save_playlists(array $playlists)
 {
 $fp = fopen('playlist.csv', 'w');
 fputcsv($fp, array('date','sa-hash','artist','song','program','channel','time','duration'));

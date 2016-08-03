@@ -48,13 +48,13 @@ public function getSongs()
 return $this->songs;
 }
 
-private function addSong($song, $artist, $hash)
+private function addSong($song, $artist, $ahash, $shash)
 {
-if (array_key_exists($hash, $this->songs)) {
-	$this->songs[$hash]['count']++;
+if (array_key_exists($shash, $this->songs)) {
+	$this->songs[$shash]['count']++;
 	return;
 }
-$this->songs[$hash]=array('count'=>1, 'song'=>$song, 'artist'=>$artist);
+$this->songs[$shash]=array('count'=>1, 'song'=>$song, 'artist'=>$artist, 'ahash'=>$ahash);
 }
 
 public function parseHTML($html)
@@ -98,6 +98,7 @@ foreach ($items as $item) {
 
 	$s=array('hash'=>$sahash,
 		'artist'=>$artist,
+		'ahash'=>$ahash,
 		'song'=>$song,
 		'program'=>$program,
 		'channel'=>$channel,
@@ -114,7 +115,7 @@ foreach ($items as $item) {
 	}
 
 	$this->programs[]=$program;
-	$this->addSong($song, $artist, $sahash);
+	$this->addSong($song, $artist, $ahash, $sahash);
 }
 
 // XXX: no..nonono!!
