@@ -46,7 +46,7 @@ fclose($fp);
 function save_playlists(array $playlists)
 {
 $fp = fopen('playlist.csv', 'w');
-fputcsv($fp, array('date','sa-hash','artist','song','program','channel','time','duration'));
+fputcsv($fp, array('date','sa-hash','artist','a-hash','song','program','channel','time','duration'));
 foreach ($playlists as $date=>$songs) {
  foreach ($songs as $song) {
   $tmp=array($date.' '.$song['time']);
