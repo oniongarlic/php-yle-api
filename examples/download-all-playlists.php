@@ -24,7 +24,7 @@ function save_songs(array $songs)
 {
 
 $fp = fopen('songs.csv', 'w');
-fputcsv($fp, array('s-hash','a-hash','artist','song','count'));
+fputcsv($fp, array('sa-hash','a-hash','artist','song','count'));
 foreach ($songs as $id=>$s) {
  fputcsv($fp, array($id, $s['ahash'], $s['artist'], $s['song'], $s['count']));
 }
