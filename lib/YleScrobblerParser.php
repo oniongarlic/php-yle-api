@@ -28,6 +28,32 @@ $this->songs=array();
 $this->doc = new \DOMDocument();
 }
 
+public function toJSON()
+{
+$tmp=array(
+	'playlist'=>$this->data,
+	'programs'=>$this->programs,
+	'artists'=>$this->artists,
+	'songs'=>$this->songs
+);
+
+return json_encode($tmp);
+}
+
+public function fromJSON($data)
+{
+$tmp=json_decode($data);
+if (!$tmp)
+	return false;
+
+$this->playlist=$tmp['playlist'];
+$this->songs=$tmp['songs'];
+$this->artists=$tmp['artists'];
+$this->programs=$tmp['programs'];
+
+return true;
+}
+
 public function getPlaylist()
 {
 return $this->data;
@@ -59,8 +85,8 @@ $this->songs[$shash]=array('count'=>1, 'song'=>$song, 'artist'=>$artist, 'ahash'
 
 public function parseHTML($html)
 {
-$this->data=array();
 $r=@$this->doc->loadHTML($html);
+$this->data=array();
 $x = new \DOMXpath($this->doc);
 $it=htmlspecialchars('http://schema.org/MusicRecording');
 $q="//li[@itemtype='".$it."']";
@@ -116,8 +142,8 @@ foreach ($items as $item) {
 
 	$this->programs[]=$program;
 	$this->addSong($song, $artist, $ahash, $sahash);
+	$ix=null;
 }
-
 // XXX: no..nonono!!
 $this->programs=array_unique($this->programs);
 
