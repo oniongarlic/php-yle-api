@@ -9,7 +9,7 @@ else
 
 $api=$config['Generic'];
 
-$c=new YleApiClient($api['app_id'], $api['app_key'], '');
+$c=new PYle\YleApiClient($api['app_id'], $api['app_key'], '');
 $c->set_debug(true);
 
 $a=$c->programs_services();

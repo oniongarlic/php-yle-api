@@ -14,7 +14,7 @@ else
 
 $api=$config['Generic'];
 
-$c=new YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
+$c=new PYle\YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
 $c->set_debug(true);
 
 $a=$c->programs_services($t);

@@ -140,8 +140,8 @@ $s->save_programs($programs);
 
 gc_enable();
 
-//$from=new DateTime('2013-06-07');
-//downloadPlaylistForChannel('yle-x3m', $from);
+$from=new DateTime('2013-06-07');
+downloadPlaylistForChannel('yle-x3m', $from);
 
 $from=new DateTime('2013-06-09');
 downloadPlaylistForChannel('yle-vega', $from);
