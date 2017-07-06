@@ -21,6 +21,7 @@ $this->pid=$pid;
 
 $this->mqtt=new Mosquitto\Client('talorg-yle-nowplaying', true);
 $this->mqtt->setWill('radio/nowplaying/active', 0, 1, true);
+$this->mqtt->setCredentials($mqtt['user'], $mqtt['pwd']);
 $this->mqtt->connect($mqtt['host'], 1883);
 $this->mqtt->publish('radio/nowplaying/active', 1);
 
@@ -33,7 +34,7 @@ private function getChannelTopic($broadcaster, $id, $offset, $item)
 return sprintf('radio/%s/%s/%d/%s', $broadcaster, $id, $offset, $item);
 }
 
-private function publishSong($delta, array $data)
+private function publishSong($delta, array $data=null)
 {
 $tmp=array(
 	'id'=>$data['id'],
@@ -43,14 +44,26 @@ $tmp=array(
 	'p'=>$data['performer']
 	);
 echo "DELTA: $delta\n"; print_r($tmp);
-$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'json'), json_encode($tmp), 1, true);
-$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'title'), $data['title'], 1, true);
-$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'performer'), $data['performer'], 1, true);
+if (is_array($data)) {
+	$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'json'), json_encode($tmp), 1, true);
+	$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'title'), $data['title'], 1, true);
+	$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'performer'), $data['performer'], 1, true);
+} else {
+	$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'json'), "", 1, true);
+	$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'title'), "", 1, true);
+	$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, $delta, 'performer'), "", 1, true);
+}
+return true;
 }
 
-private function publishProgram(array $data)
+private function publishProgram(array $data=null)
 {
-$this->mqtt->publish($this->getChannelTopic('yle', $this->pid, 0, 'program'), $data['program']->sv, 1, true);
+$topic=$this->getChannelTopic('yle', $this->pid, 0, 'program');
+if (is_array($data))
+	$r=$this->mqtt->publish($topic, $data['program']->sv, 1, true);
+else
+	$r=$this->mqtt->publish($topic, "", 1, true);
+return $r;
 }
 
 private function refreshNowplaying()
@@ -95,7 +108,8 @@ $this->publishProgram($this->queue[0]);
 foreach ($this->queue as $delta=>$song) {
 	if ($song!==false)
 		$this->publishSong($delta, $song);
-	// XXX we should probably clear previous ones...
+	else
+		$this->publishSong($delta, NULL);
 }
 
 while (true) {
@@ -104,36 +118,41 @@ while (true) {
 
 	$cnt++;
 
-	$pcur=$this->queue[0];
-	$this->queue[0]=$this->np->getCurrent();
+	// Check current
+	$nc=$this->np->getCurrent();
 
-	/*
-	We can be in various states, current song or in between
-	1. A current song is playing now (we are inside start <-> end
-	2. We are outside a current song
-	3. We have exhaused the list and need to refresh
+	if ($nc==false && $this->np->isValid()) {
+		// XXX: Check time to next song
+		echo "P2";
+		sleep(2);
+		continue;
+	} else if ($nc!==false) {
+		echo "UP";
+		$pcur=$this->queue[0];
+		$this->queue[0]==$nc;
+		//$this->updateNext(0);
+	} else {
+		echo "S1";
+		sleep(1);
+		continue;
+	}
 
-	In case we are outside a current song, but the list is still valid then we use delta 1 to set the next song
-	*/
 	if ($this->queue[0]===false && $this->np->isValid()) {
+		echo "N";
 		$this->updateNext(1);
 		$this->updateNext(2);
 	} else if ($this->queue[0]!==false && $this->queue[0]['id']!=$pcur['id']) {
 		echo "C";
 		$this->queue[-1]=$pcur;
-		$this->publishSong(0, $this->queue[0]);
-		$this->publishSong(-1, $this->queue[-1]);
+		$this->updateNext(-1);
+		$this->updateNext(0);
 		$this->publishProgram($this->queue[0]);
 		$this->np=$this->refreshNowplaying();
+		continue;
 	}
 
-	if (!$this->np->isValid()) {
-		echo "R";
-		$this->np=$this->refreshNowplaying();
-	} else {
-		echo "S";
-		sleep(1);
-	}
+	echo "S2";
+	sleep(2);
 }
 
 }
