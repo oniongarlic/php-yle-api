@@ -12,7 +12,7 @@ $api=$config['Generic'];
 $pid='1-2897178';
 $mid='6-78660c2225684dad9b5cba6f82e0ded7';
 
-$c=new YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
+$c=new PYle\YleApiClient($api['app_id'], $api['app_key'], $api['decrypt']);
 $c->set_debug(true);
 
 // XXX user specific so

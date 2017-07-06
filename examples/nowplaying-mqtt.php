@@ -34,6 +34,18 @@ private function getChannelTopic($broadcaster, $id, $offset, $item)
 return sprintf('radio/%s/%s/%d/%s', $broadcaster, $id, $offset, $item);
 }
 
+/**
+ * Publish songs details for given delta,
+ * ...etc
+ * -3=Previous before -2
+ * -2=Previous before -1
+ * -1=Previous
+ * 0=Current
+ * 1=Next
+ * 2=Next after 1
+ * 3=Next after 2
+ * ..etc
+ */
 private function publishSong($delta, array $data=null)
 {
 $tmp=array(
@@ -96,13 +108,16 @@ $cnt=0;
 $nf=false;
 
 // Set defaults
-$this->queue[-2]=$this->np->get(-2);
-$this->queue[-1]=$this->np->get(-1);
-$this->queue[0]=$this->np->get(0);
-$this->queue[1]=$this->np->get(1);
-$this->queue[2]=$this->np->get(2);
+for ($i=-2;$i<2;$i++) {
+	$tmp=$this->np->get($i);
+	if (!$tmp) {
+		echo "Initial data missing for delta $i\n";
+		continue;
+	}
+	$this->queue[$i]=$tmp;
+	$this->publishSong($i, $tmp);
+}
 $pcur=false;
-
 $this->publishProgram($this->queue[0]);
 
 foreach ($this->queue as $delta=>$song) {
